@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Home</title>
-    <body>
-
-        <!-- Fonts -->
-        
-    </body>
-</html>
+<x-layout>
+    <div class="container-fluid p-5 bg-info text-center text-white">
+        <div class="row justify-content-center">
+            <h1 class="display-1">
+                The Aulab Post
+            </h1>
+        </div>
+    </div>
+    
+</x-layout>
