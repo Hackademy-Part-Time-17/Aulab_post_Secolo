@@ -163,11 +163,15 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\FortifyServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        
     ])->toArray(),
 
     /*
@@ -185,4 +189,6 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
-];
+    /*Add the service provider */
+    ];
+    

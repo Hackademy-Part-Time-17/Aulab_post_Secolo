@@ -1,25 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+      @auth
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="NavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Benvenuto {{Auth::user()->name}} 
+        </a>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+        <ul class="dropdown-menu" aria-Labelledby="navbarDropdown">
+            <li><a class="dropdown-item"  href="#">Profilo</a></li>
+            
+            <li><hr class="dropdown-diveder"></li>
+            <li><a class="dropdown-item" href="{{route('article.index')}}">Indice</a></li>
+
+            <li><hr class="dropdown-diveder"></li>
+            <li><a class="dropdown-item" href="#" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</a></li>
+
+            <form method="POST" action="{{route('logout')}}" id="form-logout" class="d-none">
+              @csrf
+            </form>
+        </ul>
+      </li>
+      @if(Auth::user()->is_admin)
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="{{route('admin.dashboard')}}">Dashboard Admin</a>
+        </li>
+      @endif
+
+      @if(Auth::user()->is_revisor)
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('revisor.dashboard')}}">Dashboard Revisore</a>
+        </li>
+      @endif
+
+      @if(Auth::user()->is_writer)
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('writer.dashboard')}}">Dashboard Redattore</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
+          <a class="nav-link" href="{{route('article.create')}}">Inserisci un articolo</a>
+      @endif
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('careers')}}">Lavora con noi</a>
+      </li>
+
+      @endauth
+      @guest
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="NavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Benvenuto Ospite
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="{{route('register')}}">Registrati</a></li>
+          <li><a class="dropdown-item" href="{{route('login')}}">Accedi</a></li>
+        </ul>
+      </li>
+      @endguest
+    </ul>
+
+    <form class="d-flex" method="GET" action="{{route('article.search')}}">
+      <input class="form-control me-2"  type="search" placeholder="Cosa stai cercando?" aria-label="Search" name="query">
+      <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Cerca</button>
+    </form>
   </div>
 </nav>
