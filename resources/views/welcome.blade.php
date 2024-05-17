@@ -6,25 +6,26 @@
             </h1>
         </div>
     </div>
+
     @if(session('message'))
         <div class="alert alert-success text-center">
             {{session('message')}}
         </div>
     @endif
-   
+    <h2 class="text-center">Articoli più recenti</h2>
     <div class="container my-5">
         <div class="row justify-content-around ">
             @foreach($articles as $article)
             <div class="col-12 col-md-3">
-                <div class="card">
-                    <img src="{{ Storage::url($article->image) }}"  alt="..." class="card-img-top" width="300" height="320">
+                <div class="card container">
+                    <img src="{{ Storage::url($article->image) }}"  alt="..." class="card-img-top"   width="300" height="300">
                     <div class="card-body">
-                        <h5 class="card-title">{{$article->title}}</h5>
-                        <p class="card-text">{{$article->subtitle}} </p> 
+                        <h5 class="card-title" >{{$article->title}}</h5>
+                        <p class="card-text" >{{$article->subtitle}} </p> 
                         @if($article->category)
-                            <a href="{{route('article.byCategory',['category'=>$article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
+                            <a href="{{route('article.byCategory',['category'=>$article->category->id])}}" class="small text-muted fst-italic text-capitalize" >{{$article->category->name}}</a>
                         @else    
-                            <p class="small text-muted fst-italic text-capitalize">Non categorizzato</p>
+                            <p class="small text-muted fst-italic text-capitalize" >Non categorizzato</p>
                         @endif    
                         <div class="text-muted small fst-italic">Tempo di lettura:{{$article->readDuration()}} min</div>
                             <hr>

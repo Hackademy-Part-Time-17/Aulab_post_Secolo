@@ -16,7 +16,7 @@
                     <div class="card-body">                    
                         <h5 class="card-title">{{ $article->title }}</h5>
                         <p class="card-text">{{ $article->subtitle }}</p>
-                        @if
+                        @if($article->category)
                             <a href="{{route('article.byCategory',['category'=>$article->category->id])}}" class="small text-muted fst-italic text-capitalize">{{$article->category->name}}</a>
                         @else    
                             <p class="small text-muted fst-italic text-capitalize">Non categorizzato</p>

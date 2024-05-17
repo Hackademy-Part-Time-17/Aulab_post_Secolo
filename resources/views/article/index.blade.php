@@ -10,7 +10,7 @@
             @foreach($articles as $article)
                 <div class="col-12 col-md-3 my-2">
                     <div class="card">
-                        <img src= "{{ Storage::url($article->image) }}"  alt="..." class="card-img-top"width="300" height="320"> 
+                        <img src= "{{ Storage::url($article->image) }}"  alt="..." class="card-img-top" width="300" height="320"> 
                         <div class="card-body">                    
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->subtitle }}</p> 

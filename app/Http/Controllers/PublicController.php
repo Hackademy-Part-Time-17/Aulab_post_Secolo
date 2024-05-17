@@ -22,6 +22,11 @@ public function homepage(){
     return view('welcome',compact('articles'));
 }
 
+public function profile(){
+    return view('profile');
+
+}
+
 public function careers(){
     return view('careers');
 }

@@ -13,23 +13,23 @@
     <tbody>
         @foreach($articles as $article)
         <tr>
-            <th scope="row">{{$article->id}}</th>
-            <td>{{$article->title}}</td>
-            <td>{{$article->subtitle}}</td>
-            <td>{{$article->category->name ?? 'Non categorizzato'}}</td>
-            <td>
+            <th scope="row" class="col-1">{{$article->id}}</th>
+            <td class="col-2">{{$article->title}}</td>
+            <td class="col-2">{{$article->subtitle}}</td>
+            <td class="col-1">{{$article->category->name ?? 'Non categorizzato'}}</td>
+            <td class="col-1">
                 @foreach($article->tags as $tag)
                     {{$tag->name}}
                 @endforeach
             </td>
-            <td>{{$article->created_at->format('d/m/Y')}}</td>
-            <td>
-                <a href="{{route('article.show',compact('article'))}}" class="btn btn-info text-white margin:6px">Leggi l'articolo</a>
-                <a href="{{route('article.edit',compact('article'))}}" class="btn btn-warning text-white">Modifica l'articolo</a>
-                <form action="{{route('article.destroy',compact('article'))}}" method="POST" class="d-inline">
+            <td class="col-1">{{$article->created_at->format('d/m/Y')}}</td>
+            <td class="col-4">
+                <a href="{{route('article.show',compact('article'))}}" class="btn btn-info text-white m-2 ">Leggi l'articolo</a>
+                <a href="{{route('article.edit',compact('article'))}}" class="btn btn-warning text-white m-2">Modifica l'articolo</a>
+                <form action="{{route('article.destroy',compact('article'))}}" method="POST" class="d-inline ">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Elimina l'articolo</button>
+                    <button type="submit" class="btn btn-danger m-2">Elimina l'articolo</button>
                 </form>
             </td>
         </tr>

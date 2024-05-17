@@ -24,7 +24,6 @@ use App\Http\Controllers\WriterController;
 |
 */
 
-
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
 Route::get('/article/index',[ArticleController::class,'index'])->name('article.index');
@@ -42,10 +41,13 @@ Route::get('/careers',[PublicController::class,'careers'])->name('careers');
 Route::post('/careers/submit',[PublicController::class,'careersSubmit'])->name('careers.submit');
 
 Route::middleware('admin')->group(function(){
-    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/ruoli',[AdminController::class,'dashboardRoles'])->name('admin.dashboardRoles');
+    Route::get('/admin/dashboard/metainfos',[AdminController::class,'dashboardMetainfos'])->name('admin.dashboardMetainfos');
     Route::get('/admin/{user}/set-admin',[AdminController::class,'setAdmin'])->name('admin.setAdmin');//potremmo usare anche il metodo PATCH per modificare parzialmente i dati
     Route::get('/admin/{user}/set-revisor',[AdminController::class,'setRevisor'])->name('admin.setRevisor');
+    Route::get('/admin/{worker}/left-revisor',[AdminController::class,'leftRevisor'])->name('admin.leftRevisor');
     Route::get('/admin/{user}/set-writer',[AdminController::class,'setWriter'])->name('admin.setWriter');
+    Route::get('/admin/{worker}/left-writer',[AdminController::class,'leftWriter'])->name('admin.leftWriter');
     Route::put('/admin/edit/{tag}/tag',[AdminController::class,'editTag'])->name('admin.editTag');
     Route::delete('/admin/delete/{tag}/tag',[AdminController::class,'deleteTag'])->name('admin.deleteTag');
     Route::put('/admin/edit/{category}/category',[AdminController::class,'editCategory'])->name('admin.editCategory');

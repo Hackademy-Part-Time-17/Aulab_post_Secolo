@@ -9,7 +9,7 @@
 
     <div class="container my-5">
         <div class="row justify-content-around ">
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-md-8 ">
                 <img src= "{{ Storage::url($article->image) }}"  alt="..." class="card-img-top" width="600" height="640"> 
                 <div class="text-center">
                     <h2>{{ $article->subtitle }}</h2>
@@ -23,8 +23,8 @@
                     <a href="{{route('article.index')}}" class="btn btn-info text-white my-5">Torna indietro</a>                
                     @if(Auth::user() && Auth::user()->is_revisor)
                     <div class="d-flex justify-content-between">
-                        <a href="{{route('revisor.acceptArticle',compact('article'))}}" class="btn btn-info text-white">Accetta l'articolo</a>
-                        <a href="{{route('revisor.rejectArticle',compact('article'))}}" class="btn btn-info text-white">Rifiuta l'articolo</a>
+                        <a href="{{route('revisor.acceptArticle',compact('article'))}}" class="btn btn-success text-white">Accetta l'articolo</a>
+                        <a href="{{route('revisor.rejectArticle',compact('article'))}}" class="btn btn-danger text-white">Rifiuta l'articolo</a>
                     </div>
                     @endif
                 </div>
