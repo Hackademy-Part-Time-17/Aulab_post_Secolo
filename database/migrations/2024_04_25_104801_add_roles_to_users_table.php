@@ -21,7 +21,6 @@ return new class extends Migration
 
         });
         $user=User::create([
-        
             'name'=>'Admin',
             'email'=>'admin@theaulabpost.it',
             'password'=>bcrypt('12345678'),

@@ -28,7 +28,7 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 
 Route::get('/article/index',[ArticleController::class,'index'])->name('article.index');
 
-Route::get('/article/show/{article:slug}',[ArticleController::class,'show'])->name('article.show');
+Route::get('/article/{article:slug}/show',[ArticleController::class,'show'])->name('article.show');
 
 Route::get('/article/category/{category}',[ArticleController::class,'byCategory'])->name('article.byCategory');
 
@@ -43,11 +43,11 @@ Route::post('/careers/submit',[PublicController::class,'careersSubmit'])->name('
 Route::middleware('admin')->group(function(){
     Route::get('/admin/dashboard/ruoli',[AdminController::class,'dashboardRoles'])->name('admin.dashboardRoles');
     Route::get('/admin/dashboard/metainfos',[AdminController::class,'dashboardMetainfos'])->name('admin.dashboardMetainfos');
-    Route::get('/admin/{user}/set-admin',[AdminController::class,'setAdmin'])->name('admin.setAdmin');//potremmo usare anche il metodo PATCH per modificare parzialmente i dati
-    Route::get('/admin/{user}/set-revisor',[AdminController::class,'setRevisor'])->name('admin.setRevisor');
-    Route::get('/admin/{worker}/left-revisor',[AdminController::class,'leftRevisor'])->name('admin.leftRevisor');
-    Route::get('/admin/{user}/set-writer',[AdminController::class,'setWriter'])->name('admin.setWriter');
-    Route::get('/admin/{worker}/left-writer',[AdminController::class,'leftWriter'])->name('admin.leftWriter');
+    Route::get('/admin/{user:id}/set-admin',[AdminController::class,'setAdmin'])->name('admin.setAdmin');//potremmo usare anche il metodo PATCH per modificare parzialmente i dati
+    Route::get('/admin/{user:id}/set-revisor',[AdminController::class,'setRevisor'])->name('admin.setRevisor');
+    Route::get('/admin/{user:id}/left-revisor',[AdminController::class,'leftRevisor'])->name('admin.leftRevisor');
+    Route::get('/admin/{user:id}/set-writer',[AdminController::class,'setWriter'])->name('admin.setWriter');
+    Route::get('/admin/{user:id}/left-writer',[AdminController::class,'leftWriter'])->name('admin.leftWriter');
     Route::put('/admin/edit/{tag}/tag',[AdminController::class,'editTag'])->name('admin.editTag');
     Route::delete('/admin/delete/{tag}/tag',[AdminController::class,'deleteTag'])->name('admin.deleteTag');
     Route::put('/admin/edit/{category}/category',[AdminController::class,'editCategory'])->name('admin.editCategory');
@@ -56,17 +56,17 @@ Route::middleware('admin')->group(function(){
 });
 Route::middleware('revisor')->group(function(){
     Route::get('/revisor/dashboard',[RevisorController::class,'dashboard'])->name('revisor.dashboard');
-    Route::get('/revisor/{article}/accept',[RevisorController::class,'acceptArticle'])->name('revisor.acceptArticle');
-    Route::get('/revisor/{article}/reject',[RevisorController::class,'rejectArticle'])->name('revisor.rejectArticle');
-    Route::get('/revisor/{article}/undo',[RevisorController::class,'undoArticle'])->name('revisor.undoArticle');
+    Route::get('/revisor/{article:slug}/accept',[RevisorController::class,'acceptArticle'])->name('revisor.acceptArticle');
+    Route::get('/revisor/{article:slug}/reject',[RevisorController::class,'rejectArticle'])->name('revisor.rejectArticle');
+    Route::get('/revisor/{article:slug}/undo',[RevisorController::class,'undoArticle'])->name('revisor.undoArticle');
 });
 Route::middleware('writer')->group(function(){
     Route::get('/article/create',[ArticleController::class,'create'])->name('article.create');
     Route::post('/article/store',[ArticleController::class,'store'])->name('article.store');
     Route::get('/writer/dashboard',[WriterController::class,'dashboard'])->name('writer.dashboard');
-    Route::get('/article/{article}/edit',[ArticleController::class,'edit'])->name('article.edit');
-    Route::put('/article/{article}/update',[ArticleController::class,'update'])->name('article.update');
-    Route::delete('/article/{article}/destroy',[ArticleController::class,'destroy'])->name('article.destroy');
+    Route::get('/article/{article:slug}/edit',[ArticleController::class,'edit'])->name('article.edit');
+    Route::put('/article/{article:slug}/update',[ArticleController::class,'update'])->name('article.update');
+    Route::delete('/article/{article:slug}/destroy',[ArticleController::class,'destroy'])->name('article.destroy');
 
 
 });

@@ -45,6 +45,7 @@ class ArticleController extends Controller
             'category'=>'required',
             'tags'=>'required',
         ]);
+
         $article=Article::create([
             'title'=>$request->title,
             'subtitle'=>$request->subtitle,
@@ -55,9 +56,10 @@ class ArticleController extends Controller
             'slug'=>Str::slug($request->title),
         ]);
        
-        $tags_string=strtolower(str_replace(' ','',$request->tags));
+        $tags=strtolower(str_replace(' ','',$request->tags));
+        $tags=str_replace('#','',$tags);
         //con str_replace rimuovo tutti gli spazi nella stringa
-        $tags=explode(',' ,$tags_string);
+        $tags=explode(',' ,$tags);
         foreach($tags as $tag){
             $newTag=Tag::updateOrCreate(
                 ['name'=>$tag],
@@ -135,8 +137,10 @@ class ArticleController extends Controller
                     ['image'=>$request->file('image')->store('public/images'),
                     ]);
             }
-        $tags_string=strtolower(str_replace(' ','',$request->tags));
-        $tags=explode(',' ,$tags_string);
+        $tags=strtolower(str_replace(' ','',$request->tags));
+        $tags=str_replace('#','',$tags);
+
+        $tags=explode(',' ,$tags);
         //dopo aver lanciato explode() sui tags arrivati dalla request, abbiamo creato un array di appoggio.
         $newTags=[];
         foreach($tags as $tag){

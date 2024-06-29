@@ -20,8 +20,9 @@
                 <hr>
                 <p>{{$article->body}}</p>
                 <div class="text-center">
-                    <a href="{{route('article.index')}}" class="btn btn-info text-white my-5">Torna indietro</a>                
-                    @if(Auth::user() && Auth::user()->is_revisor)
+                    <a href="{{route('article.index')}}" class="btn btn-info text-white my-5">Torna all'indice</a>                
+                    @if(Auth::user() && Auth::user()->is_revisor)   
+                    <hr>
                     <div class="d-flex justify-content-between">
                         <a href="{{route('revisor.acceptArticle',compact('article'))}}" class="btn btn-success text-white">Accetta l'articolo</a>
                         <a href="{{route('revisor.rejectArticle',compact('article'))}}" class="btn btn-danger text-white">Rifiuta l'articolo</a>

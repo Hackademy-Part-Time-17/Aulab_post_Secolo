@@ -12,7 +12,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>The Aulab Post</title>
 </head>
-<body style="background-color:whitesmoke;" >
+<body style="background-color:white-smoke;" >
 
     <x-navbar/>
         <div class="min-vh-100 ">

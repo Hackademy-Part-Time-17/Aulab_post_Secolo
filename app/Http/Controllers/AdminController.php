@@ -15,8 +15,8 @@ class AdminController extends Controller
         $adminRequest=User::where('is_admin',NULL)->get();
         $revisorRequest=User::where('is_revisor',NULL)->get();
         $writerRequest=User::where('is_writer',NULL)->get();
-        $workers=User::where('is_admin',false)->get();//utente che riveste il ruolo di revisore o redattore ma non di admin
-        return view('admin.dashboard-roles',compact('adminRequest','revisorRequest','writerRequest','workers'));
+        $usersNotAdmin=User::where('is_admin',false)->get();//utente che riveste il ruolo di revisore o redattore ma non di admin
+        return view('admin.dashboard-roles',compact('adminRequest','revisorRequest','writerRequest','usersNotAdmin'));
     }
 
     public function dashboardMetainfos(){
@@ -33,7 +33,7 @@ class AdminController extends Controller
         return redirect(route('admin.dashboardRoles'))->with('message','Hai correttamente reso revisore l\'utente scelto !');
     }
 
-    public function leftRevisor(User $worker){
+    public function leftRevisor(User $user){
         $worker->update(['is_revisor'=>false]);
         return redirect(route('admin.dashboardRoles'))->with('message','Hai correttamente tolto il ruolo da revisore all\'utente scelto !');
     }
@@ -43,7 +43,7 @@ class AdminController extends Controller
         return redirect(route('admin.dashboardRoles'))->with('message','Hai correttamente reso redattore l\'utente scelto !');
     }
 
-    public function leftWriter(User $worker){
+    public function leftWriter(User $user){
         $worker->update(['is_writer'=>false]);
         return redirect(route('admin.dashboardRoles'))->with('message','Hai correttamente tolto il ruolo da redattore all\'utente scelto !');
     }

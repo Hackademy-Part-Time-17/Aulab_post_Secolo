@@ -8,18 +8,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($workers as $worker)
+        @foreach($usersNotAdmin as $user)
         <tr>
-            @if(($worker->is_revisor && $worker->is_writer)||($worker->is_revisor || $worker->is_writer))
-            <th scope="row">{{$worker->id}}</th>
-            <td>{{$worker->name}}</td>
-            <td>{{$worker->email}}</td>
+            @if(($user->is_revisor && $user->is_writer)||($user->is_revisor || $user->is_writer))
+            <th scope="row">{{$user->id}}</th>
+            <td>{{$user->name}}</td>
+            <td>{{$user->email}}</td>
             <td> 
-                @if($worker->is_revisor)  
-                <a href="{{route('admin.leftRevisor',compact('worker'))}}" class="btn btn-danger text-white ">Rimuovi revisore</a>
+                @if($user->is_revisor)  
+                <a href="{{route('admin.leftRevisor',compact('user'))}}" class="btn btn-danger text-white ">Rimuovi revisore</a>
                 @endif
-                @if($worker->is_writer)
-                <a href="{{route('admin.leftWriter',compact('worker'))}}" class="btn btn-danger text-white ">Rimuovi redattore</a>
+                @if($user->is_writer)
+                <a href="{{route('admin.leftWriter',compact('user'))}}" class="btn btn-danger text-white ">Rimuovi redattore</a>
                 @endif
             </td>
             @endif
