@@ -32,7 +32,7 @@ Route::get('/article/{article:slug}/show',[ArticleController::class,'show'])->na
 
 Route::get('/article/category/{category}',[ArticleController::class,'byCategory'])->name('article.byCategory');
 
-Route::get('/article/writer/{user}',[ArticleController::class,'byWriter'])->name('article.byWriter');
+Route::get('/article/writer/{user:id}',[ArticleController::class,'byWriter'])->name('article.byWriter');
 
 Route::get('/article/search',[ArticleController::class,'articleSearch'])->name('article.search');
 

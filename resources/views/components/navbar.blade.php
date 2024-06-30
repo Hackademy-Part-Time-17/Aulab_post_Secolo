@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-warning ">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: yellow;">
   <div class="nav-item col-1 text-info " id="theaulabpost" ><b>TheAulabPost</b></div>
   <div class="collapse navbar-collapse col-8" id="navbarNav">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 container" >

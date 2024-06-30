@@ -1,5 +1,5 @@
 <div class="col-12 col-md-3 my-2">
-    <div class="card m-info">
+    <div class="card">
         <img src="{{ Storage::url($article->image) }}"  alt="..." class="card-img-top "   width="300" height="300">
         <div class="card-body ">
             <h5 class="card-title" >{{$article->title}}</h5>
